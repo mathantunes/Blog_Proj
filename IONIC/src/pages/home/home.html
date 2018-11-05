@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Postar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <button ion-button (click)='postProduct("teste", "autor")'>Post</button> -->
+  <form [formGroup]='rform' (ngSubmit)="post(rform.value)">
+    <ion-item>
+      <ion-label floating >Título</ion-label>
+      <ion-input type="text" formControlName="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Mensagem</ion-label>
+      <ion-input type="text" formControlName="subtitle"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Link de foto</ion-label>
+      <ion-input type="text" formControlName="url"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Autor</ion-label>
+      <ion-input type="text" formControlName="author"></ion-input>
+    </ion-item>
+    <button ion-button full type='submit' [disabled]='!rform.valid'>Postar</button>
+  </form>
+</ion-content>

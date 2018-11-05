@@ -1,0 +1,38 @@
+<!--
+  Generated template for the DetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalhes</ion-title>
+    <button ion-fab mini (click)="CloseModal()" style="background-color: transparent ">
+      <ion-icon name="arrow-back" style="color:black; background-color: transparent"></ion-icon>
+    </button>
+    <button ion-fab mini (click)="deletePost(post._id)" style="background-color: transparent">
+      <ion-icon name="trash" style="color: black; background-color: transparent"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img src="{{post?.url}}" />
+
+  <h2>{{post?.title}}</h2>
+  <p>{{post?.subtitle}}</p>
+  <ion-item no-lines>Autor : {{post?.author}}</ion-item>
+
+  <ion-item no-lines (click)="like(post)">
+    <ion-icon *ngIf="liked" name="heart" style="color:red"></ion-icon>
+    <ion-icon *ngIf="!liked" name="heart" style="color: black"></ion-icon>{{post?.likes}}
+  </ion-item>
+
+
+  <ion-item no-lines *ngFor="let comment of post?.comments">{{comment}}</ion-item>
+  <ion-input placeholder="Comentário" [(ngModel)]="comment"></ion-input>
+  <button ion-button round outline style="background-color: transparent; color:black" (click)="commentPost(post)">Comentar</button>
+</ion-content>
